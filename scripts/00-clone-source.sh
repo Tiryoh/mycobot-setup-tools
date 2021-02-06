@@ -6,7 +6,9 @@ SRC_DIR=$(cd $(dirname ${BASH_SOURCE:-$0})/../; pwd)
 
 download_atom_main2p3 () {
     cd $SRC_DIR/downloads
-    wget https://github.com/elephantrobotics/myCobot/releases/download/0/myCobot.V1.3.zip
+    if [ ! -e myCobot.V1.3.zip ]; then
+        wget https://github.com/elephantrobotics/myCobot/releases/download/0/myCobot.V1.3.zip
+    fi
     unzip myCobot.V1.3.zip
     cp myCobot固件烧录器V1.3/ino/boot_app0.bin $SRC_DIR/myCobot-Firmware/ino
     cp myCobot固件烧录器V1.3/ino/bootloader_qio_80m.bin $SRC_DIR/myCobot-Firmware/ino
@@ -71,7 +73,7 @@ main () {
     mkdir -p $SRC_DIR/myCobot-Firmware/ino
     mkdir -p $SRC_DIR/downloads
     download_innoextract
-    download_atom_main2p5
+    download_atom_main2p3
 }
 
 main
