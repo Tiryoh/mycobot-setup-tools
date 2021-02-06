@@ -73,7 +73,7 @@ main () {
     mkdir -p $SRC_DIR/myCobot-Firmware/ino
     mkdir -p $SRC_DIR/downloads
     download_innoextract
-    download_atom_main2p3
+    download_atom_main2p5
 }
 
 main
