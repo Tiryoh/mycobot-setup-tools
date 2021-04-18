@@ -77,6 +77,23 @@ download_atom_main2p6 () {
     cp $SRC_DIR/downloads/mystudio-v100/MyStudio/ino/tools/Transponder.ino.partitions.bin $SRC_DIR/myCobot-Firmware/ino
 }
 
+download_atom_main2p7 () {
+    cd $SRC_DIR/downloads
+    if [ ! -e mystudio-linux-v120.tar.xz ]; then
+        wget https://github.com/elephantrobotics/myStudio/releases/download/v1.2/MyStudio-linux.tar.xz -O mystudio-linux-v120.tar.xz
+    fi
+    if [ ! -d mystudio-v120 ]; then
+        mkdir -p mystudio-v120
+        tar xvf mystudio-linux-v120.tar.xz -C mystudio-v120 --wildcards 'MyStudio/ino/**.bin'
+    fi
+    cp $SRC_DIR/downloads/mystudio-v120/MyStudio/ino/boot_app0.bin $SRC_DIR/myCobot-Firmware/ino
+    cp $SRC_DIR/downloads/mystudio-v120/MyStudio/ino/bootloader_qio_80m.bin $SRC_DIR/myCobot-Firmware/ino
+    cp $SRC_DIR/downloads/mystudio-v120/MyStudio/ino/atom/AtomMain2.7.ino.bin $SRC_DIR/myCobot-Firmware/ino
+    cp $SRC_DIR/downloads/mystudio-v120/MyStudio/ino/atom/AtomMain2.7.ino.partitions.bin $SRC_DIR/myCobot-Firmware/ino
+    cp $SRC_DIR/downloads/mystudio-v120/MyStudio/ino/tools/Transponder.ino.bin $SRC_DIR/myCobot-Firmware/ino
+    cp $SRC_DIR/downloads/mystudio-v120/MyStudio/ino/tools/Transponder.ino.partitions.bin $SRC_DIR/myCobot-Firmware/ino
+}
+
 download_innoextract () {
     cd $SRC_DIR/downloads
     if [ ! -e innoextract-1.9-linux.tar.xz ]; then
@@ -90,7 +107,7 @@ main () {
     mkdir -p $SRC_DIR/myCobot-Firmware/ino
     mkdir -p $SRC_DIR/downloads
     download_innoextract
-    download_atom_main2p6
+    download_atom_main2p7
 }
 
 main
